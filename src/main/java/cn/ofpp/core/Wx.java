@@ -43,13 +43,4 @@ public class Wx {
         });
     }
 
-
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            int index = (int)(Math.random()*3);
-            System.out.println("index = " + index);
-        }
-
-    }
-
 }

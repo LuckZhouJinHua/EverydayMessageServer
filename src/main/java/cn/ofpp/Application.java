@@ -5,6 +5,9 @@ import cn.ofpp.core.GirlFriend;
 import cn.ofpp.core.MessageFactory;
 import cn.ofpp.core.Wx;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -55,29 +58,46 @@ public class Application {
 
     }
 
+    public static String getTodayOfDate(Date dt) {
+        String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dt);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)
+            w = 0;
+        String format = new SimpleDateFormat("yyyy年MM月dd").format(dt);
+        return format +" " + weekDays[w];
+    }
 
     // new 一个 男友 也可单独针对一个friend设置模板ID 以达到不同人不同消息  自定义模板
 //        BoyFriend boyFriend = new BoyFriend("某男友",
 //                "江苏省", "南京市", "1999-08-08", "2011-04-16", "oQFk-5qtXv2uGNCu9oiCiV85KWD8", "5t7-Ksy8_rw-QmUkxf8J7Pe-QLQ2rBc7RWJi_pSmeh4");
 //        Wx.sendTemplateMessage(MessageFactory.resolveMessage(boyFriend));
 
+//    {{friendName.DATA}}
+//    你今年{{howOld.DATA}}岁啦
+//    距下一次阳历生日还有{{nextBirthday.DATA}}天
+//    距我们的下一次纪念日仅有{{nextMemorialDay.DATA}}天
+//    你当前在{{province.DATA}}{{city.DATA}}
+//    天气大概率是:{{weather.DATA}}  {{temperature.DATA}
+//        {{winddirection.DATA}}  {{windpower.DATA}}
+//        空气湿度:{{humidity.DATA}}
+//        {{weatherTips.DATA}}
+//        {{author.DATA}}
+//        {{origin.DATA}}
+//        {{content.DATA}}
 
-
-
-
-// {{friendName.DATA}}
-//你今年{{howOld.DATA}}岁啦(如果你不喜欢看到这,我将在下次更新去掉!!请积极反馈)
+//{{friendName.DATA}}
+//你今年{{howOld.DATA}}岁啦
 //距下一次阳历生日还有{{nextBirthday.DATA}}天
 //距我们的下一次纪念日仅有{{nextMemorialDay.DATA}}天
-//你当前老巢在{{province.DATA}}{{city.DATA}}
-//今天天气大概率是{{weather.DATA}}
+//你当前在{{province.DATA}}{{city.DATA}}
+//天气大概率是:{{weather.DATA}}
+//温度{{temperature.DATA}
+//湿度{{winddirection.DATA}}
+//甜腻{{windpower.DATA}}
+//空气湿度:{{humidity.DATA}}
 //{{weatherTips.DATA}}
-//今日气温{{temperature.DATA}}℃
-//风力描述{{winddirection.DATA}}
-//风力级别{{windpower.DATA}}级
-//空气湿度{{humidity.DATA}}
-//{{author.DATA}}
-//{{origin.DATA}}
 //{{content.DATA}}
 
 }

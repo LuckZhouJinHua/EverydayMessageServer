@@ -6,8 +6,10 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import static cn.ofpp.Application.getTodayOfDate;
 import static cn.ofpp.core.GaodeUtil.getAdcCode;
 
 /**
@@ -52,6 +54,8 @@ public class MessageFactory {
         RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
 
         ArrayList<WxMpTemplateData> wxMpTemplateData = new ArrayList<>();
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("todayDate").value(getTodayOfDate(new Date())).color("#771F06").build());
+
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("friendName").value(friend.getFullName()).color("#D91AD9").build());
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#F77234").build());
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color("#437004").build());
@@ -74,6 +78,7 @@ public class MessageFactory {
         }else if(weather.getWeather().contains("雪")){
             wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("宝贝!下雪啦,要穿暖和出门看你喜欢的雪花!").color("#F77234").build());
         }
+
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color("#F53F3F").build());
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color("#F53F3F").build());
         wxMpTemplateData.add(TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color("#F53F3F").build());
