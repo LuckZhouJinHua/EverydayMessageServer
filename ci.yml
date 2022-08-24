@@ -24,4 +24,4 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: SendWxTemplateMsg
-        run: sudo java -jar ./target/CareUEveryDay-1.0.0.jar
+        run: sudo java -jar ./target/EverydayMessageServer-1.0.0.jar
