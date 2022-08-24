@@ -1,13 +1,13 @@
 name: CareUEveryDay Cron CI
 
-#on:
-#  schedule:
-#    - cron: '0 23 * * *'
-
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 55 16 * * ?'
+
+#on:
+#  push:
+#    branches:
+#      - master
 
 
 jobs:
