@@ -2,7 +2,10 @@ name: CareUEveryDay Cron CI
 
 on:
   schedule:
-    - cron: '15 9 * * *'
+    - cron: '35,38,41,42,44,46,48,50 2 * * *'
+#    - cron: '0 0,2,4,7,14 * * *'
+
+# UTC时间,如果使用北京时间 将北京时间-8 即为UTC时间(假如你想8点执行 那就写0)
 
 #on:
 #  push:

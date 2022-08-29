@@ -54,34 +54,33 @@ public class MessageFactory {
         RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
 
         ArrayList<WxMpTemplateData> wxMpTemplateData = new ArrayList<>();
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("todayDate").value(getTodayOfDate(new Date())).color("#771F06").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("friendName").value(friend.getFullName() + " 早上好").color("#F53F3F").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("todayDate").value(Utils.getTodayOfDate(new Date())).color("#F77234").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#FF9A2E").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color("#F9CC45").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("nextBirthday").value(friend.getNextBirthdayDays()).color("#FADC19").build());
 
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("friendName").value(friend.getFullName()).color("#D91AD9").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#F77234").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color("#437004").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("nextBirthday").value(friend.getNextBirthdayDays()).color("#771F06").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("nextMemorialDay").value(friend.getNextMemorialDay()).color("#551DB0").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("province").value(friend.getProvince()).color("#F53F3F").build());
-        wxMpTemplateData.add( TemplateDataBuilder.builder().name("city").value(friend.getCity()).color("#FADC19").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color("#00B42A").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("nextMemorialDay").value(friend.getNextMemorialDay()).color("#9FDB1D").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("province").value(friend.getProvince()).color("#4CD263").build());
+        wxMpTemplateData.add( TemplateDataBuilder.builder().name("city").value(friend.getCity()).color("#4CD263").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color("#37D4CF").build());
 
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()).color("#722ED1").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()).color("#F5319D").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("windpower").value(weather.getWindpower()).color("#3491FA").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()).color("#F77234").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()+"℃").color("#37D4CF").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()+"风").color("#57A9FB").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("windpower").value(weather.getWindpower()+"级").color("#57A9FB").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()+"%").color("#4080FF").build());
 
         /*特殊天气提示*/
         if(weather.getWeather().contains("云") || weather.getWeather().contains("晴")){
-            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("今日天气感觉不错,要保持好心情哦!").color("#F77234").build());
+            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("今日天气感觉不错,要保持好心情哦!").color("#8D4EDA").build());
         }else if(weather.getWeather().contains("雨")){
-            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("今日可能有雨,记得带伞哦,宝!").color("#F77234").build());
+            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("今日可能有雨,记得带伞哦,宝!").color("#8D4EDA").build());
         }else if(weather.getWeather().contains("雪")){
-            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("宝贝!下雪啦,要穿暖和出门看你喜欢的雪花!").color("#F77234").build());
+            wxMpTemplateData.add(TemplateDataBuilder.builder().name("weatherTips").value("宝贝!下雪啦,要穿暖和出门看你喜欢的雪花!").color("#8D4EDA").build());
         }
-
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color("#F53F3F").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color("#F53F3F").build());
-        wxMpTemplateData.add(TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color("#F53F3F").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color("#4e5969").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color("#4e5969").build());
+        wxMpTemplateData.add(TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color("#4e5969").build());
         return wxMpTemplateData;
     }
 
